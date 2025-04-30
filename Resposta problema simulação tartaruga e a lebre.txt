@@ -1,0 +1,125 @@
+Nome: JASMINE DE SÁ ARAUJO, VICTOR EVANGELISTA QUIXABEIRA , FRANCISCO DANIEL BENTO DOS SANTOS.
+Turma: 2024.2
+Disciplina: 2025.1 - BASES DE ENGENHARIA DE SOFTWARE II - COMPUTAÇÃO
+
+
+
+Resposta - Avaliação parte 1 - Bases da computação 2 - Engenharia de Software.
+
+Problemas Simulação Tartaruga e a Lebre
+
+Código abaixo:
+
+import java.util.Random;
+
+public class CorridaTartarugaLepre {
+
+    public static final int TAMANHO_PISTA = 70;
+
+    public static void main(String[] args) {
+        int posTartaruga = 1;
+        int posLebre = 1;
+
+        Random random = new Random();
+
+        System.out.println("BANG !!!!!");
+        System.out.println("E LÁ VÃO ELES!!!!!");
+
+        while (posTartaruga < TAMANHO_PISTA && posLebre < TAMANHO_PISTA) {
+            // Tartaruga
+            int movimentoTartaruga = random.nextInt(10);
+            if (movimentoTartaruga < 5) {
+                posTartaruga += 3;
+            } else if (movimentoTartaruga < 7) {
+                posTartaruga -= 6;
+            } else {
+                posTartaruga += 1;
+            }
+
+            // Lebre
+            int movimentoLebre = random.nextInt(10);
+            if (movimentoLebre < 2) {
+                // não se move
+            } else if (movimentoLebre < 4) {
+                posLebre += 9;
+            } else if (movimentoLebre < 5) {
+                posLebre -= 12;
+            } else if (movimentoLebre < 8) {
+                posLebre += 1;
+            } else {
+                posLebre -= 2;
+            }
+
+            // Posição dentro da pista
+            posTartaruga = Math.max(1, Math.min(posTartaruga, TAMANHO_PISTA));
+            posLebre = Math.max(1, Math.min(posLebre, TAMANHO_PISTA));
+
+            // Pista
+            for (int i = 1; i <= TAMANHO_PISTA; i++) {
+                if (i == posTartaruga && i == posLebre) {
+                    System.out.print("AI!!!");
+                } else if (i == posTartaruga) {
+                    System.out.print("T");
+                } else if (i == posLebre) {
+                    System.out.print("H");
+                } else {
+                    System.out.print("_");
+                }
+            }
+            System.out.println();
+
+            // Animação dos fãs
+            exibirComentarioDosFas(random);
+
+            // Pausa 
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        // Resultado 
+        if (posTartaruga >= TAMANHO_PISTA && posLebre >= TAMANHO_PISTA) {
+            System.out.println("OCORREU UM EMPATE!");
+        } else if (posTartaruga >= TAMANHO_PISTA) {
+            System.out.println("TARTARUGA VENCEU!!! ÊH!! /0\\ /0\\ /0\\");
+        } else {
+            System.out.println("A LEBRE VENCEU. OH. \\0/ \\0/ \\0/");
+        }
+
+        // Fãs no final
+        System.out.println("\nGrupo de fãs aplaude de pé!");
+        exibirTorcidaFinal();
+    }
+
+    public static void exibirComentarioDosFas(Random random) {
+        String[] comentarios = {
+            "Fã 1: Vai, Tartaruga! Passos lentos, mas firmes!",
+            "Fã 2: A Lebre vai ganhar fácil, é muito rápida!",
+            "Fã 3: Olha a Tartaruga se recuperando!",
+            "Fã 4: AAAAAAH! Eles colidiram!!!",
+            "Fã 5: Essa corrida tá insana!",
+            "Fã 6: Vamos, Lebre! Não dorme no ponto!",
+            "Fã 7: A Tartaruga está com sangue nos olhos!",
+            "Fã 8: Força, galera! Que vença o melhor!",
+            "Fã 9: Tá emocionante demais!!!",
+            "Fã 10: Que ultrapassagem!!!"
+        };
+
+        int indice = random.nextInt(comentarios.length);
+        System.out.println(comentarios[indice]);
+
+        // Torcida
+        System.out.println("/0\\  \\0/  /0\\  \\0/  /0\\");
+    }
+
+    public static void exibirTorcidaFinal() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println("/0\\  \\0/  /0\\  \\0/  /0\\  \\0/  /0\\  \\0/");
+        }
+    }
+}
+
+
+
