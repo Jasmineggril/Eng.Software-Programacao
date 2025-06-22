@@ -1,0 +1,265 @@
+Nome: Jasmine De Sá Araujo
+Turma: 2024.2
+Matrícula: 202401266
+Disciplina: 2025.1 - BASES DE ENGENHARIA DE SOFTWARE II - COMPUTAÇÃO
+
+Lista 2 - Introdução a Classes, Métodos e Objetos
+Questão 1 - Resposta
+// question1/Employee.java
+public class Employee {
+    private String firstName;
+    private String lastName;
+    private double monthlySalary;
+
+    public Employee(String firstName, String lastName, double monthlySalary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        if (monthlySalary > 0) {
+            this.monthlySalary = monthlySalary;
+        }
+    }
+
+    // Getters and setters
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public double getMonthlySalary() { return monthlySalary; }
+    public void setMonthlySalary(double monthlySalary) {
+        if (monthlySalary > 0) {
+            this.monthlySalary = monthlySalary;
+        }
+    }
+
+    public double getAnnualSalary() {
+        return monthlySalary * 12;
+    }
+
+    public void giveRaise(double percentage) {
+        monthlySalary += monthlySalary * (percentage / 100);
+    }
+}
+
+// question1/EmployeeTest.java
+public class EmployeeTest {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("João", "Silva", 2500);
+        Employee e2 = new Employee("Ana", "Oliveira", 3000);
+
+        System.out.println("Salário anual de " + e1.getFirstName() + ": R$ " + e1.getAnnualSalary());
+        System.out.println("Salário anual de " + e2.getFirstName() + ": R$ " + e2.getAnnualSalary());
+
+        e1.giveRaise(10);
+        e2.giveRaise(10);
+
+        System.out.println("Após aumento de 10%:");
+        System.out.println("Salário anual de " + e1.getFirstName() + ": R$ " + e1.getAnnualSalary());
+        System.out.println("Salário anual de " + e2.getFirstName() + ": R$ " + e2.getAnnualSalary());
+    }
+}
+
+Questão 2 - Resposta
+
+// question2/Employee.java
+public class Employee {
+    private String name;
+    private double salary;
+
+
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = (salary > 0) ? salary : 0.0;
+    }
+
+
+    public String getName() { return name; }
+    public double getSalary() { return salary; }
+}
+
+
+Questão 3 - Resposta 
+// question3/Date.java
+public class Date {
+    private int dia, mes, ano;
+
+    public Date(int dia, int mes, int ano) {
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+    }
+
+    // Getters and setters
+    public int getDia() { return dia; }
+    public void setDia(int dia) { this.dia = dia; }
+    public int getMes() { return mes; }
+    public void setMes(int mes) { this.mes = mes; }
+    public int getAno() { return ano; }
+    public void setAno(int ano) { this.ano = ano; }
+
+    public void displayDate() {
+        System.out.println(mes + "/" + dia + "/" + ano);
+    }
+}
+
+// question3/DateTest.java
+public class DateTest {
+    public static void main(String[] args) {
+        Date data = new Date(8, 4, 2025);
+        System.out.print("Data: ");
+        data.displayDate();
+    }
+}
+
+Questão 4 - Resposta
+
+public class Author
+{
+
+	private String nome;
+	private String email;
+
+	public Author(String nome, String email)
+	{
+		this.nome = nome;
+		this.email = email;
+	}
+
+	public void setNome(String nome)
+	{
+		this.nome = nome;
+	}
+
+	public String getNome()
+	{
+		return this.nome;
+	}
+
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
+
+
+	public String getEmail()
+	{
+		return this.email;
+	}
+
+
+}
+
+Questão 5 - Resposta 
+// question5/Engine.java
+public class Engine {
+    private int horsepower;
+    private String type;
+
+    public Engine(int horsepower, String type) {
+        this.horsepower = (horsepower > 0) ? horsepower : 0;
+        this.type = type;
+    }
+
+    public int getHorsepower() { return horsepower; }
+    public String getType() { return type; }
+}
+
+// question5/Car.java
+public class Car {
+    private String model;
+    private int year;
+    private double price;
+    private Engine engine;
+
+    public Car(String model, int year, double price, Engine engine) {
+        this.model = model;
+        this.year = (year < 1886) ? 1886 : year;
+        this.price = (price > 0) ? price : 0.0;
+        this.engine = engine;
+    }
+
+    public void displayCarInfo() {
+        System.out.println("Modelo: " + model);
+        System.out.println("Ano: " + year);
+        System.out.println("Preço: R$ " + price);
+        System.out.println("Motor: " + engine.getHorsepower() + " HP - " + engine.getType());
+    }
+}
+
+// question5/CarTest.java
+public class CarTest {
+    public static void main(String[] args) {
+        Engine motor = new Engine(200, "Gasolina");
+        Car carro = new Car("Civic", 2022, 120000, motor);
+        carro.displayCarInfo();
+    }
+}
+
+Questão 6 - Resposta
+// question6/Address.java
+public class Address {
+    private String street;
+    private String city;
+    private String postalCode;
+
+    public Address(String street, String city, String postalCode) {
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+    }
+
+    public String getFullAddress() {
+        return street + ", " + city + " - CEP: " + postalCode;
+    }
+}
+
+// question6/Student.java
+public class Student {
+    private String name;
+    private String studentId;
+    private double gpa;
+    private Address address;
+
+    public Student(String name, String studentId, double gpa, Address address) {
+        this.name = name;
+        this.studentId = studentId;
+        this.gpa = (gpa >= 0.0 && gpa <= 4.0) ? gpa : 0.0;
+        this.address = address;
+    }
+
+    public void displayStudentInfo() {
+        System.out.println("Nome: " + name);
+        System.out.println("Matrícula: " + studentId);
+        System.out.println("GPA: " + gpa);
+        System.out.println("Endereço: " + address.getFullAddress());
+    }
+}
+
+// question6/StudentTest.java
+public class StudentTest {
+    public static void main(String[] args) {
+        Address endereco = new Address("Rua A", "Salvador", "40000-000");
+        Student aluno = new Student("Carlos Lima", "202401266", 3.5, endereço);
+        aluno.displayStudentInfo();
+    }
+}
+
+}
+
+Questão 7 - Resposta
+
+// question7/Employee.java
+public class Employee {
+    private String name;
+    private double salary;
+
+
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = (salary > 0) ? salary : 0.0;
+    }
+
+
+    public String getName() { return name; }
+    public double getSalary() { return salary; }
+
+}

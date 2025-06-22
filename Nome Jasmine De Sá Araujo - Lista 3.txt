@@ -1,0 +1,207 @@
+Nome: Jasmine De Sá Araujo
+Turma: 2024.2
+Matrícula: 202401266
+Disciplina: 2025.1 - BASES DE ENGENHARIA DE SOFTWARE II - COMPUTAÇÃO
+
+Lista 3 - Estruturas de Controle 
+
+1)import java.util.Scanner;
+
+public class Palindromo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int numero;
+
+        do {
+            System.out.print("Digite um número de 5 dígitos: ");
+            numero = sc.nextInt();
+        } while (numero < 10000 || numero > 99999);
+
+        int original = numero;
+        int reverso = 0;
+
+        while (numero != 0) {
+            reverso = reverso * 10 + numero % 10;
+            numero /= 10;
+        }
+
+        if (original == reverso) {
+            System.out.println("É um palíndromo!");
+        } else {
+            System.out.println("Não é um palíndromo.");
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2)
+import java.util.Scanner;
+
+public class BinarioParaDecimal {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número binário: ");
+        int binario = sc.nextInt();
+        int decimal = 0, base = 1;
+
+        while (binario != 0) {
+            int resto = binario % 10;
+            decimal += resto * base;
+            base *= 2;
+            binario /= 10;
+        }
+
+        System.out.println("Decimal: " + decimal);
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3)
+import java.util.Scanner;
+
+public class CossenoTaylor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o valor de x (em radianos): ");
+        double x = sc.nextDouble();
+
+        double cos = 1;
+        int sinal = -1;
+
+        for (int i = 2; i <= 20; i += 2) {
+            cos += sinal * Math.pow(x, i) / fatorial(i);
+            sinal *= -1;
+        }
+
+        System.out.printf("cos(%.2f) ≈ %.5f\n", x, cos);
+    }
+
+    public static long fatorial(int n) {
+        long f = 1;
+        for (int i = 2; i <= n; i++) f *= i;
+        return f;
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4)
+public class DeMorgan {
+    public static void main(String[] args) {
+        int x = 6, y = 8, a = 3, b = 4, g = 5, i = 2, j = 6;
+
+        System.out.println(!(x > 5 && !(y <= 7)) == ((! (x > 5)) || y <= 7));
+        System.out.println((!(a == b) || !(g != 5)) == (a != b || g == 5));
+        System.out.println((!((x >= 8) && (y < 4))) == ((x < 8) || (y >= 4)));
+        System.out.println((!((i < 4) || (j >= 6))) == ((i >= 4) && (j < 6)));
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5)
+import java.awt.*;
+import javax.swing.*;
+
+public class Circulos extends JPanel {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (int i = 0; i < 8; i++) {
+            g.setColor(new Color((i * 30) % 255, (i * 60) % 255, (i * 90) % 255));
+            g.drawOval(150 - i * 10, 150 - i * 10, 20 * i, 20 * i);
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Círculos Concêntricos");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new Circulos());
+        frame.setSize(400, 400);
+        frame.setVisible(true);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6)
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Leque extends JPanel {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int largura = getWidth();
+        int altura = getHeight();
+
+        for (int i = 0; i <= largura; i += 15) {
+            g.setColor(new Color((i * 3) % 255, (i * 5) % 255, (i * 7) % 255));
+            g.drawLine(0, 0, i, altura);
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Padrão Leque");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new Leque());
+        frame.setSize(400, 400);
+        frame.setVisible(true);
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    7)
+
+
+import java.awt.*;
+import javax.swing.*;
+
+public class FormasGraficas extends JPanel {
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        // drawLine
+        g.drawLine(10, 20, 60, 20);
+
+        // drawRect
+        g.drawRect(10, 40, 50, 50);
+
+        // fillRect
+        g.setColor(Color.BLUE);
+        g.fillRect(70, 40, 50, 50);
+
+        // draw3DRect
+        g.setColor(Color.BLACK);
+        g.draw3DRect(10, 100, 50, 50, true);
+
+        // fill3DRect
+        g.setColor(Color.GREEN);
+        g.fill3DRect(70, 100, 50, 50, true);
+
+        // fillRoundRect
+        g.setColor(Color.BLACK);
+        g.fillRoundRect(130, 40, 50, 50, 20, 20);
+
+        // drawRoundRect
+        g.setColor(Color.BLACK);
+        g.drawRoundRect(190, 40, 50, 50, 20, 20);
+
+        // drawOval
+        g.setColor(Color.MAGENTA);
+        g.drawOval(130, 100, 50, 50);
+
+        // fillOval
+        g.setColor(Color.PINK);
+        g.fillOval(190, 100, 50, 50);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Drawing lines, rectangles and ovals");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 220);
+        frame.add(new FormasGraficas());
+        frame.setVisible(true);
+    }
+}

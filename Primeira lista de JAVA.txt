@@ -1,0 +1,239 @@
+Nome: Jasmine De Sá Araujo
+Turma: 2024.2
+Matrícula: 202401266
+Disciplina: 2025.1 - BASES DE ENGENHARIA DE SOFTWARE II - COMPUTAÇÃO
+
+Lista 1 - Introdução ao Java
+
+1) letras a, d e e.
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+
+2)
+a) * e /, depois + e -, x = 15.
+b) %, * e /, depois + e -, x = 3.
+c) (), / e * em (), + em (), * e *, x = 324.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        int num1, num2, soma;
+
+        System.out.print("Digite o primeiro número: ");
+        num1 = entrada.nextInt();
+        System.out.print("Digite o segundo número: ");
+        num2 = entrada.nextInt();
+
+        soma = num1 + num2;
+
+        System.out.println("Soma = " + soma);
+
+        entrada.close();
+    }
+}
+
+
+
+
+3)
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        int num1, num2, soma, produto, subtracao;
+        float divisao;
+
+        System.out.print("Digite o primeiro número: ");
+        num1 = entrada.nextInt();
+        System.out.print("Digite o segundo número: ");
+        num2 = entrada.nextInt();
+
+        soma = num1 + num2;
+        produto = num1 * num2;
+        subtracao = num1 - num2;
+
+        System.out.println(num1 + " + " + num2 + " = " + soma);
+        System.out.println(num1 + " * " + num2 + " = " + produto);
+        System.out.println(num1 + " - " + num2 + " = " + subtracao);
+
+        if (num2 != 0) {
+            divisao = (float) num1 / num2;
+            System.out.println(num1 + " / " + num2 + " = " + divisao);
+        } else {
+            System.out.println("Erro: Divisão por zero não é permitida.");
+        }
+
+        entrada.close();
+    }
+}
+
+4)
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Digite um número inteiro: ");
+        int numero = entrada.nextInt();
+
+        if (numero % 2 == 0) {
+            System.out.println("O número é par.");
+        } else {
+            System.out.println("O número é ímpar.");
+        }
+
+        entrada.close();
+    }
+}
+
+
+5)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        final double PI = 3.14159;
+        
+        System.out.print("Digite o tamanho do raio: ");
+        double raio = entrada.nextDouble();
+
+        double diametro = 2 * raio;
+        double circunferencia = 2 * PI * raio;
+        double area = PI * raio * raio;
+
+        System.out.printf("Diâmetro: %.2f%n", diametro);
+        System.out.printf("Circunferência: %.2f%n", circunferencia);
+        System.out.printf("Área: %.2f%n", area);
+
+        entrada.close();
+    }
+}
+
+
+6)
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Digite um número de 5 dígitos: ");
+        int numero = entrada.nextInt();
+
+        if (numero >= 10000 && numero <= 99999) {
+            System.out.println((numero / 10000) + "   " + ((numero / 1000) % 10) + "   " + ((numero / 100) % 10) + "   " + ((numero / 10) % 10) + "   " + (numero % 10));
+        } else {
+            System.out.println("Erro: O número deve ter exatamente 5 dígitos.");
+        }
+
+        entrada.close();
+    }
+}
+
+7)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.print("Digite o primeiro lado: ");
+        double a = entrada.nextDouble();
+        System.out.print("Digite o segundo lado: ");
+        double b = entrada.nextDouble();
+        System.out.print("Digite o terceiro lado: ");
+        double c = entrada.nextDouble();
+
+        if (a + b > c && a + c > b && b + c > a) {
+            System.out.println("Os lados formam um triângulo.");
+        } else {
+            System.out.println("Os lados NÃO formam um triângulo.");
+        }
+
+        entrada.close();
+    }
+}
+
+
+8)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.print("Dia do nascimento: ");
+        int dia = entrada.nextInt();
+        System.out.print("Mês do nascimento: ");
+        int mes = entrada.nextInt();
+        System.out.print("Ano do nascimento: ");
+        int ano = entrada.nextInt();
+
+        int valor = (ano + mes + 100 * dia) / 100 + (ano + mes + 100 * dia) % 100;
+        valor = valor % 5;
+
+        String[] personalidades = {
+            "Você é tímido.",
+            "Você é sonhador.",
+            "Você é paquerador.",
+            "Você é atraente.",
+            "Você é irresistível."
+        };
+
+        System.out.println(personalidades[valor]);
+
+        entrada.close();
+    }
+}
+
+9)
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.print("Quilômetros percorridos por dia: ");
+        float km = entrada.nextFloat();
+        System.out.print("Preço da gasolina por litro: ");
+        float precoGasolina = entrada.nextFloat();
+        System.out.print("Quilômetros por litro: ");
+        float kmPorLitro = entrada.nextFloat();
+        System.out.print("Taxas de estacionamento: ");
+        float taxaEstacionamento = entrada.nextFloat();
+        System.out.print("Valor dos pedágios: ");
+        float pedagio = entrada.nextFloat();
+
+        float total = taxaEstacionamento + pedagio + (km / kmPorLitro) * precoGasolina;
+
+        System.out.printf("Custo total diário: R$ %.2f%n", total);
+
+        entrada.close();
+    }
+}
+
+
+10)
+public class Main {
+    public static void main(String[] args) {
+        final double TAXA_CRESCIMENTO = 0.009;
+        double populacao = 8.062;
+
+        for (int ano = 1; ano <= 5; ano++) {
+            populacao *= (1 + TAXA_CRESCIMENTO);
+            System.out.printf("População após %d anos: %.3f bilhões.%n", ano, populacao);
+        }
+    }
+}
